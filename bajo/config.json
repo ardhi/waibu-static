@@ -1,5 +1,5 @@
 {
-  "alias": "static",
+  "alias": "wktbstatic",
   "prefix": "asset",
   "virtualPrefix": "~",
   "mountAppAsRoot": true,
