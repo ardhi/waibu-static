@@ -1,6 +1,6 @@
 # wakatobi-static
 
-Plugin name: **wakatobiStatic**, alias: **static**
+Plugin name: **wakatobiStatic**, alias: **wktbstatic**
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/ardhi/wakatobi-static) ![NPM Version](https://img.shields.io/npm/v/wakatobi-static)
 
