@@ -6,7 +6,7 @@ Plugin name: **wakatobiStatic**, alias: **static**
 
 > <br />**Attention**: I do NOT accept any pull request at the moment, thanks!<br /><br />
 
-Static assets support for [Wakatobi Framework](https://github.com/ardhi/wakatobi).
+Static assets support for [wakatobi](https://github.com/ardhi/wakatobi).
 
 ## Installation
 

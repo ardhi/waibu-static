@@ -1,7 +1,7 @@
 {
   "name": "wakatobi-static",
   "version": "1.0.0",
-  "description": "Static Assets support for Wakatobi Framework",
+  "description": "Static Assets support for Wakatobi",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
