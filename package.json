@@ -1,0 +1,30 @@
+{
+  "name": "wakatobi-static",
+  "version": "1.0.0",
+  "description": "Static Assets support for Wakatobi Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardhi/wakatobi-static.git"
+  },
+  "keywords": [
+    "virtual",
+    "static",
+    "webserver",
+    "bajo",
+    "framework",
+    "fastify",
+    "modular"
+  ],
+  "author": "Ardhi Lukianto <ardhi@lukianto.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ardhi/wakatobi-static/issues"
+  },
+  "homepage": "https://github.com/ardhi/wakatobi-static#readme",
+  "dependencies": {}
+}
