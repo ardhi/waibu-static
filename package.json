@@ -1,7 +1,7 @@
 {
-  "name": "wakatobi-static",
+  "name": "waibu-static",
   "version": "1.0.0",
-  "description": "Static Assets support for Wakatobi",
+  "description": "Static Assets support for Waibu",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ardhi/wakatobi-static.git"
+    "url": "git+https://github.com/ardhi/waibu-static.git"
   },
   "keywords": [
     "virtual",
@@ -23,8 +23,8 @@
   "author": "Ardhi Lukianto <ardhi@lukianto.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ardhi/wakatobi-static/issues"
+    "url": "https://github.com/ardhi/waibu-static/issues"
   },
-  "homepage": "https://github.com/ardhi/wakatobi-static#readme",
+  "homepage": "https://github.com/ardhi/waibu-static#readme",
   "dependencies": {}
 }

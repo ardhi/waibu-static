@@ -1,5 +1,5 @@
 {
-  "alias": "wktbstatic",
+  "alias": "wbstatic",
   "prefix": "asset",
   "virtualPrefix": "~",
   "mountAppAsRoot": true,
@@ -9,5 +9,5 @@
   "compress": false,
   "rateLimit": false,
   "disabled": [],
-  "dependencies": ["wakatobi"]
+  "dependencies": ["waibu"]
 }

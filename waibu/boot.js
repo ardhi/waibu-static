@@ -8,12 +8,12 @@ const boot = {
   handler: async function boot () {
     const { importModule, runHook } = this.app.bajo
     const prefix = this.config.prefix
-    const routeHook = await importModule('wakatobi:/lib/webapp-scope/route-hook.js')
-    const handleCors = await importModule('wakatobi:/lib/webapp-scope/handle-cors.js')
-    const handleHelmet = await importModule('wakatobi:/lib/webapp-scope/handle-helmet.js')
-    const handleCompress = await importModule('wakatobi:/lib/webapp-scope/handle-compress.js')
-    const handleRateLimit = await importModule('wakatobi:/lib/webapp-scope/handle-rate-limit.js')
-    await this.app.wakatobi.instance.register(async (ctx) => {
+    const routeHook = await importModule('waibu:/lib/webapp-scope/route-hook.js')
+    const handleCors = await importModule('waibu:/lib/webapp-scope/handle-cors.js')
+    const handleHelmet = await importModule('waibu:/lib/webapp-scope/handle-helmet.js')
+    const handleCompress = await importModule('waibu:/lib/webapp-scope/handle-compress.js')
+    const handleRateLimit = await importModule('waibu:/lib/webapp-scope/handle-rate-limit.js')
+    await this.app.waibu.instance.register(async (ctx) => {
       this.instance = ctx
       await runHook(`${this.name}:afterCreateContext`, ctx)
       await handleRateLimit.call(this, ctx, this.config.rateLimit)
