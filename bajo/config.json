@@ -3,7 +3,7 @@
   "prefix": "asset",
   "virtualPrefix": "~",
   "mountAppAsRoot": true,
-  "auth": ["basic", "apiKey", "jwt", "session"],
+  "auth": ["basic", "apiKey", "jwt"],
   "cors": {},
   "helmet": {},
   "compress": false,
