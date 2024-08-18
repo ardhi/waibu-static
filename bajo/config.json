@@ -1,7 +1,6 @@
 {
   "alias": "wbstatic",
   "prefix": "asset",
-  "virtualPrefix": "~",
   "mountAppAsRoot": true,
   "auth": ["basic", "apiKey", "jwt"],
   "cors": {},
@@ -9,5 +8,6 @@
   "compress": false,
   "rateLimit": false,
   "disabled": [],
+  "routePathHandlers": ["asset", "virtual"],
   "dependencies": ["waibu"]
 }
