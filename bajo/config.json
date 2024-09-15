@@ -8,6 +8,5 @@
   "compress": false,
   "rateLimit": false,
   "disabled": [],
-  "routePathHandlers": ["asset", "virtual"],
   "dependencies": ["waibu"]
 }
