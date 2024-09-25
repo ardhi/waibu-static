@@ -1,5 +1,5 @@
 {
-  "alias": "wbstatic",
+  "alias": "wstatic",
   "prefix": "asset",
   "mountAppAsRoot": true,
   "auth": ["basic", "apiKey", "jwt"],

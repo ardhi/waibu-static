@@ -1,6 +1,6 @@
 # waibu-static
 
-Plugin name: **waibuStatic**, alias: **wbstatic**
+Plugin name: **waibuStatic**, alias: **wstatic**
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/ardhi/waibu-static) ![NPM Version](https://img.shields.io/npm/v/waibu-static)
 
