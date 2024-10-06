@@ -1,7 +1,7 @@
 {
   "alias": "wstatic",
   "prefix": "asset",
-  "mountAppAsRoot": true,
+  "mountMainAsRoot": true,
   "auth": ["basic", "apiKey", "jwt"],
   "cors": {},
   "helmet": {},
