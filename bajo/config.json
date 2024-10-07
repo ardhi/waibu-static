@@ -1,5 +1,4 @@
 {
-  "alias": "wstatic",
   "prefix": "asset",
   "mountMainAsRoot": true,
   "auth": ["basic", "apiKey", "jwt"],
