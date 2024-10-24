@@ -1,9 +1,11 @@
 function assetDir (ns) {
-  const dir = this.config.prefix === '' ? '' : `/${this.config.prefix}`
+  const { getAppPrefix } = this.app.waibu
+  const prefix = getAppPrefix(this.name)
+  const dir = prefix === '' ? '' : `/${prefix}`
   if (!ns) return dir
   if (ns === this.app.bajo.mainNs && this.config.mountMainAsRoot) return dir
   const plugin = this.app.bajo.getPlugin(ns)
-  return dir + '/' + plugin.config.prefix
+  return dir + '/' + getAppPrefix(plugin.name)
 }
 
 export default assetDir
