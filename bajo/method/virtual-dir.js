@@ -1,9 +1,9 @@
 function virtualDir (ns) {
-  const { getAppPrefix } = this.app.waibu
+  const { getPluginPrefix } = this.app.waibu
   const { trim } = this.app.bajo.lib._
   const plugin = this.app.bajo.getPlugin(ns)
-  let dir = trim(`/${getAppPrefix(this.name)}/${this.app.waibu.config.prefixVirtual}`, '/')
-  dir = `/${dir}/${getAppPrefix(plugin.name)}`
+  let dir = trim(`/${getPluginPrefix(this.name)}/${this.app.waibu.config.prefixVirtual}`, '/')
+  dir = `/${dir}/${getPluginPrefix(plugin.name)}`
   return dir
 }
 
