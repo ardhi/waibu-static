@@ -8,6 +8,5 @@
   "helmet": {},
   "compress": false,
   "rateLimit": false,
-  "disabled": [],
-  "dependencies": ["waibu"]
+  "disabled": []
 }
