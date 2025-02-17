@@ -2,7 +2,7 @@
   "waibu": {
     "prefix": "asset"
   },
-  "mountMainAsRoot": true,
+  "mountMainAsRoot": false,
   "auth": ["basic", "apiKey", "jwt"],
   "cors": {},
   "helmet": {},
