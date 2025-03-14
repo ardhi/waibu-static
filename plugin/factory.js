@@ -22,7 +22,7 @@ async function factory (pkgName) {
     }
 
     init = async () => {
-      const { trim } = this.app.bajo.lib._
+      const { trim } = this.lib._
       this.config.waibu = this.config.waibu ?? {}
       this.config.waibu.prefix = trim(this.config.waibu.prefix, '/')
     }
@@ -43,11 +43,12 @@ async function factory (pkgName) {
 
     virtualDir = (ns) => {
       const { getPluginPrefix } = this.app.waibu
-      const { trim } = this.app.bajo.lib._
+      const { trimEnd } = this.lib._
       const plugin = this.app.bajo.getPlugin(ns)
-      let dir = trim(`/${getPluginPrefix(this.name, 'waibuStatic')}/${this.app.waibu.config.prefixVirtual}`, '/')
-      dir = `/${dir}/${getPluginPrefix(plugin.name, 'waibuStatic')}`
-      return dir
+      const prefix = getPluginPrefix(this.name, 'waibuStatic')
+      const virtPrefix = this.app.waibu.config.prefixVirtual
+      const dir = prefix === '' ? '' : `/${prefix}`
+      return trimEnd(`${dir}/${virtPrefix}/${getPluginPrefix(plugin.name, 'waibuStatic')}`, '/')
     }
   }
 }
