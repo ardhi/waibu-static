@@ -1,7 +1,8 @@
 {
-  "servingAsset%s": "Sajikan aset: %s",
   "staticVirtualMustHavePrefix%s": "Statis virtual '@%s' harus memiliki prefiks, lewati!",
   "staticVirtualMustHaveRoot%s%s": "Statis virtual '%s@%s' harus memiliki direktory root, lewati!",
   "rootOnVirtualNotExists%s%s": "Direktori root di virtual '%s@%s' tidak ditemukan, lewati!",
-  "servingVirtual%s": "Sajikan virtual: %s"
+  "serving%s": "Serving %s",
+  "assets": "assets",
+  "virtuals": "virtuals"
 }

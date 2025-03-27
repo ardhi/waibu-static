@@ -1,7 +1,8 @@
 {
-  "servingAsset%s": "Serving asset: %s",
   "staticVirtualMustHavePrefix%s": "Static virtual '@%s' must have a prefix, skipped!",
   "staticVirtualMustHaveRoot%s%s": "Static virtual '%s@%s' must have root folder, skipped!",
   "rootOnVirtualNotExists%s%s": "Root folder on virtual '%s@%s' doesn't exist, skipped!",
-  "servingVirtual%s": "Serving virtual: %s"
+  "serving%s": "Serving %s",
+  "assets": "assets",
+  "virtuals": "virtuals"
 }
