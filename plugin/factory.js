@@ -37,10 +37,11 @@ async function factory (pkgName) {
       return dir + '/' + getPluginPrefix(ns, 'waibuStatic')
     }
 
-    routePath = (name) => {
-      const { ns, fullPath, subNs } = this.app.bajo.breakNsPath(name)
-      if (subNs === 'virtual') return `${this.virtualDir(ns)}${fullPath}`
-      if (subNs === 'asset') return `${this.assetDir(ns)}${fullPath}`
+    routePath = (name, { uriEncoded = true } = {}) => {
+      let { ns, fullPath, subNs } = this.app.bajo.breakNsPath(name)
+      const prefix = subNs === 'virtual' ? this.virtualDir(ns) : this.assetDir(ns)
+      if (uriEncoded) fullPath = fullPath.split('/').map(p => encodeURI(p)).join('/')
+      return `${prefix}${fullPath}`
     }
 
     virtualDir = (ns) => {
@@ -57,7 +58,8 @@ async function factory (pkgName) {
       const { getPluginPrefix } = this.app.waibu
       const { fastGlob } = this.lib
       const { isEmpty, map, camelCase } = this.lib._
-      const { breakNsPath } = this.app.bajo
+      const { breakNsPath, importPkg } = this.app.bajo
+      const mime = await importPkg('waibu:mime')
       const { ns, subNs, path: _path } = breakNsPath(rsc)
       if (subNs === 'virtual') return [] // only for assets
       const root = `${this.app[ns].dir.pkg}/${this.name}/asset`
@@ -68,12 +70,14 @@ async function factory (pkgName) {
       const files = map(await fastGlob(pattern), file => {
         const href = `/${prefix}${file.replace(root, '')}`
         const ext = path.extname(file)
+        const mimeType = mime.getType(ext) ?? ''
         const base = path.basename(file, ext)
         const name = camelCase(base)
         return {
           file,
           href,
-          name
+          name,
+          mimeType
         }
       })
       return files
