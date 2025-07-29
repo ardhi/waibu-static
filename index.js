@@ -41,7 +41,7 @@ async function factory (pkgName) {
       let { ns, fullPath, subNs } = this.app.bajo.breakNsPath(name)
       const prefix = subNs === 'virtual' ? this.virtualDir(ns) : this.assetDir(ns)
       if (uriEncoded) fullPath = fullPath.split('/').map(p => encodeURI(p)).join('/')
-      return `${prefix}${fullPath}`
+      return `${prefix}${fullPath}`.replace('//', '/')
     }
 
     virtualDir = (ns) => {
