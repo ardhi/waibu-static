@@ -62,7 +62,7 @@ async function factory (pkgName) {
       const mime = await importPkg('waibu:mime')
       const { ns, subNs, path: _path } = breakNsPath(rsc)
       if (subNs === 'virtual') return [] // only for assets
-      const root = `${this.app[ns].dir.pkg}/${this.name}/asset`
+      const root = `${this.app[ns].dir.pkg}/extend/${this.name}/asset`
       let pattern = root
       if (!isEmpty(_path)) pattern += _path
       if (!_path.includes('*')) pattern += '/**/*'

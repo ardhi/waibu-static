@@ -1,7 +1,7 @@
-import asset from '../lib/asset.js'
-import virtual from '../lib/virtual.js'
-// import notFound from '../lib/not-found.js'
-import error from '../lib/error.js'
+import asset from '../../lib/asset.js'
+import virtual from '../../lib/virtual.js'
+// import notFound from '../../lib/not-found.js'
+import error from '../../lib/error.js'
 
 const boot = {
   level: 10,
