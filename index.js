@@ -3,7 +3,7 @@ import path from 'path'
 async function factory (pkgName) {
   const me = this
 
-  return class WaibuStatic extends this.lib.BajoPlugin {
+  return class WaibuStatic extends this.lib.Plugin {
     constructor () {
       super(pkgName, me.app)
       this.alias = 'wstatic'
