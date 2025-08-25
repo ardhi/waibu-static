@@ -3,11 +3,12 @@ import path from 'path'
 async function factory (pkgName) {
   const me = this
 
-  return class WaibuStatic extends this.lib.Plugin {
+  class WaibuStatic extends this.lib.Plugin {
+    static alias = 'wstatic'
+    static dependencies = ['waibu']
+
     constructor () {
       super(pkgName, me.app)
-      this.alias = 'wstatic'
-      this.dependencies = ['waibu']
       this.routePathHandlers = ['asset', 'virtual']
       this.config = {
         waibu: {
@@ -83,6 +84,8 @@ async function factory (pkgName) {
       return files
     }
   }
+
+  return WaibuStatic
 }
 
 export default factory
