@@ -3,7 +3,7 @@ import path from 'path'
 async function factory (pkgName) {
   const me = this
 
-  class WaibuStatic extends this.lib.Plugin {
+  class WaibuStatic extends this.app.pluginClass.base {
     static alias = 'wstatic'
     static dependencies = ['waibu']
 
@@ -25,7 +25,7 @@ async function factory (pkgName) {
     }
 
     init = async () => {
-      const { trim } = this.lib._
+      const { trim } = this.app.lib._
       this.config.waibu = this.config.waibu ?? {}
       this.config.waibu.prefix = trim(this.config.waibu.prefix, '/')
     }
@@ -47,7 +47,7 @@ async function factory (pkgName) {
 
     virtualDir = (ns) => {
       const { getPluginPrefix } = this.app.waibu
-      const { trimEnd } = this.lib._
+      const { trimEnd } = this.app.lib._
       const plugin = this.app.bajo.getPlugin(ns)
       const prefix = getPluginPrefix(this.name, 'waibuStatic')
       const virtPrefix = this.app.waibu.config.prefixVirtual
@@ -57,8 +57,8 @@ async function factory (pkgName) {
 
     listResources = async (rsc) => {
       const { getPluginPrefix } = this.app.waibu
-      const { fastGlob } = this.lib
-      const { isEmpty, map, camelCase } = this.lib._
+      const { fastGlob } = this.app.lib
+      const { isEmpty, map, camelCase } = this.app.lib._
       const { breakNsPath, importPkg } = this.app.bajo
       const mime = await importPkg('waibu:mime')
       const { ns, subNs, path: _path } = breakNsPath(rsc)
