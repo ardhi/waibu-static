@@ -26,13 +26,12 @@ async function factory (pkgName) {
 
     init = async () => {
       const { trim } = this.app.lib._
-      this.config.waibu = this.config.waibu ?? {}
       this.config.waibu.prefix = trim(this.config.waibu.prefix, '/')
     }
 
     assetDir = (ns) => {
       const { getPluginPrefix } = this.app.waibu
-      const prefix = getPluginPrefix(this.name, 'waibuStatic')
+      const prefix = getPluginPrefix(this.ns, 'waibuStatic')
       const dir = prefix === '' ? '' : `/${prefix}`
       if (!ns) return dir
       return dir + '/' + getPluginPrefix(ns, 'waibuStatic')
@@ -49,10 +48,10 @@ async function factory (pkgName) {
       const { getPluginPrefix } = this.app.waibu
       const { trimEnd } = this.app.lib._
       const plugin = this.app.bajo.getPlugin(ns)
-      const prefix = getPluginPrefix(this.name, 'waibuStatic')
+      const prefix = getPluginPrefix(this.ns, 'waibuStatic')
       const virtPrefix = this.app.waibu.config.prefixVirtual
       const dir = prefix === '' ? '' : `/${prefix}`
-      return trimEnd(`${dir}/${virtPrefix}/${getPluginPrefix(plugin.name, 'waibuStatic')}`, '/')
+      return trimEnd(`${dir}/${virtPrefix}/${getPluginPrefix(plugin.ns, 'waibuStatic')}`, '/')
     }
 
     listResources = async (rsc) => {
@@ -63,11 +62,11 @@ async function factory (pkgName) {
       const mime = await importPkg('waibu:mime')
       const { ns, subNs, path: _path } = breakNsPath(rsc)
       if (subNs === 'virtual') return [] // only for assets
-      const root = `${this.app[ns].dir.pkg}/extend/${this.name}/asset`
+      const root = `${this.app[ns].dir.pkg}/extend/${this.ns}/asset`
       let pattern = root
       if (!isEmpty(_path)) pattern += _path
       if (!_path.includes('*')) pattern += '/**/*'
-      const prefix = `${this.config.waibu.prefix}/${getPluginPrefix(ns, this.name)}`
+      const prefix = `${this.config.waibu.prefix}/${getPluginPrefix(ns, this.ns)}`
       const files = map(await fastGlob(pattern), file => {
         const href = `/${prefix}${file.replace(root, '')}`
         const ext = path.extname(file)

@@ -17,7 +17,7 @@ const boot = {
     await handleCors.call(this, ctx, this.config.cors)
     await handleHelmet.call(this, ctx, this.config.helmet)
     await handleCompress.call(this, ctx, this.config.compress)
-    await routeHook.call(this, this.name)
+    await routeHook.call(this, this.ns)
     await error.call(this, ctx)
     await asset.call(this, ctx, prefix)
     await virtual.call(this, ctx, prefix)
