@@ -1,8 +1,19 @@
 import path from 'path'
 
+/**
+ * Plugin factory
+ *
+ * @param {string} pkgName - NPM package name
+ * @returns {class}
+ */
 async function factory (pkgName) {
   const me = this
 
+  /**
+   * WaibuStatic class
+   *
+   * @class
+   */
   class WaibuStatic extends this.app.pluginClass.base {
     static alias = 'wstatic'
     static dependencies = ['waibu']
@@ -13,6 +24,9 @@ async function factory (pkgName) {
       this.config = {
         waibu: {
           prefix: 'asset'
+        },
+        waibuStatic: {
+          prefix: 'static'
         },
         mountMainAsRoot: false,
         auth: ['basic', 'apiKey', 'jwt'],

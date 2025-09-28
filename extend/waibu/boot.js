@@ -1,6 +1,6 @@
 import asset from '../../lib/asset.js'
 import virtual from '../../lib/virtual.js'
-// import notFound from '../../lib/not-found.js'
+import notFound from '../../lib/not-found.js'
 import error from '../../lib/error.js'
 
 const boot = {
@@ -21,7 +21,7 @@ const boot = {
     await error.call(this, ctx)
     await asset.call(this, ctx, prefix)
     await virtual.call(this, ctx, prefix)
-    // await notFound.call(this, ctx)
+    await notFound.call(this, ctx)
   }
 }
 
