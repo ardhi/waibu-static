@@ -2,7 +2,7 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/ardhi/waibu-static) ![NPM Version](https://img.shields.io/npm/v/waibu-static)
 
-> <br />**Attention**: I do NOT accept any pull request at the moment, thanks! ([Why?](CONTRIBUTING.md))<br /><br />
+> <br />**Attention**: I do NOT accept any pull request at the moment, thanks! ([Why?](wiki/CONTRIBUTING.md))<br /><br />
 
 Static assets for [Waibu Web Framework](https://github.com/ardhi/waibu)
 
@@ -18,9 +18,9 @@ Next, open the file located at ```{data-dir}/config/.plugins``` and add ```waibu
 
 ## Documentations
 
-- [Config Object](tutorial/00-config.md)
+- [Config Object](wiki/CONFIG.md)
 - [API](https://ardhi.github.io/waibu-static)
-- [Contributing](CONTRIBUTING.md)
+- [Contributing](wiki/CONTRIBUTING.md)
 
 ## Hire Me
 
