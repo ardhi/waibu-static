@@ -14,7 +14,7 @@ async function factory (pkgName) {
    *
    * @class
    */
-  class WaibuStatic extends this.app.pluginClass.base {
+  class WaibuStatic extends this.app.baseClass.Base {
     static alias = 'wstatic'
     static dependencies = ['waibu']
 
