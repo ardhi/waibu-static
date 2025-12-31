@@ -45,7 +45,7 @@ async function factory (pkgName) {
 
     assetDir = (ns) => {
       const { getPluginPrefix } = this.app.waibu
-      const prefix = getPluginPrefix(this.ns, 'waibuStatic')
+      const prefix = this.config.waibu.prefix
       const dir = prefix === '' ? '' : `/${prefix}`
       if (!ns) return dir
       return dir + '/' + getPluginPrefix(ns, 'waibuStatic')
@@ -62,7 +62,7 @@ async function factory (pkgName) {
       const { getPluginPrefix } = this.app.waibu
       const { trimEnd } = this.app.lib._
       const plugin = this.app.bajo.getPlugin(ns)
-      const prefix = getPluginPrefix(this.ns, 'waibuStatic')
+      const prefix = this.config.waibu.prefix
       const virtPrefix = this.app.waibu.config.prefixVirtual
       const dir = prefix === '' ? '' : `/${prefix}`
       return trimEnd(`${dir}/${virtPrefix}/${getPluginPrefix(plugin.ns, 'waibuStatic')}`, '/')
