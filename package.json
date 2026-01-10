@@ -9,7 +9,11 @@
   },
   "type": "module",
   "bajo": {
-    "type": "plugin"
+    "type": "plugin",
+    "alias": "wstatic",
+    "dependencies": [
+      "waibu"
+    ]
   },
   "repository": {
     "type": "git",

@@ -15,9 +15,6 @@ async function factory (pkgName) {
    * @class
    */
   class WaibuStatic extends this.app.baseClass.Base {
-    static alias = 'wstatic'
-    static dependencies = ['waibu']
-
     constructor () {
       super(pkgName, me.app)
       this.routePathHandlers = ['asset', 'virtual']
