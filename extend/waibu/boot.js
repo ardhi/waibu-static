@@ -1,8 +1,12 @@
 import asset from '../../lib/asset.js'
 import virtual from '../../lib/virtual.js'
+import errorHandler from '../../lib/error.js'
+import notFoundHandler from '../../lib/not-found.js'
 
 const boot = {
   level: 10,
+  errorHandler,
+  notFoundHandler,
   handler: async function boot (prefix) {
     const { importModule } = this.app.bajo
     const routeHook = await importModule('waibu:/lib/webapp-scope/route-hook.js')
