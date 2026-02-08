@@ -1,11 +1,9 @@
 import asset from '../../lib/asset.js'
 import virtual from '../../lib/virtual.js'
-import notFound from '../../lib/not-found.js'
-import error from '../../lib/error.js'
 
 const boot = {
   level: 10,
-  handler: async function boot (ctx, prefix) {
+  handler: async function boot (prefix) {
     const { importModule } = this.app.bajo
     const routeHook = await importModule('waibu:/lib/webapp-scope/route-hook.js')
     const handleCors = await importModule('waibu:/lib/webapp-scope/handle-cors.js')
@@ -13,15 +11,13 @@ const boot = {
     const handleCompress = await importModule('waibu:/lib/webapp-scope/handle-compress.js')
     const handleRateLimit = await importModule('waibu:/lib/webapp-scope/handle-rate-limit.js')
 
-    await handleRateLimit.call(this, ctx, this.config.rateLimit)
-    await handleCors.call(this, ctx, this.config.cors)
-    await handleHelmet.call(this, ctx, this.config.helmet)
-    await handleCompress.call(this, ctx, this.config.compress)
+    await handleRateLimit.call(this, this.config.rateLimit)
+    await handleCors.call(this, this.config.cors)
+    await handleHelmet.call(this, this.config.helmet)
+    await handleCompress.call(this, this.config.compress)
     await routeHook.call(this, this.ns)
-    await error.call(this, ctx)
-    await asset.call(this, ctx, prefix)
-    await virtual.call(this, ctx, prefix)
-    await notFound.call(this, ctx)
+    await asset.call(this, prefix)
+    await virtual.call(this, prefix)
   }
 }
 
