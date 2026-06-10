@@ -1,5 +1,9 @@
 # Changes
 
+## 2026-06-10
+
+- [2.4.0] Remove route redirects because now directly handled by ```waibu```
+
 ## 2026-02-21
 
 - [2.3.1] Bug fix on ```errorHandler```
