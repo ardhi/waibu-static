@@ -58,7 +58,7 @@ async function factory (pkgName) {
     virtualDir = (ns) => {
       const { getPluginPrefix } = this.app.waibu
       const { trimEnd } = this.app.lib._
-      const plugin = this.app.bajo.getPlugin(ns)
+      const plugin = this.app.getPlugin(ns)
       const prefix = this.config.waibu.prefix
       const virtPrefix = this.app.waibu.config.prefixVirtual
       const dir = prefix === '' ? '' : `/${prefix}`
