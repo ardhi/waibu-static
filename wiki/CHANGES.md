@@ -1,5 +1,9 @@
 # Changes
 
+## 2026-11-10
+
+- [2.7.0] Remove all module context and start using one `webAppCtx`
+
 ## 2026-07-08
 
 - [2.6.1] Bug fix in `boot.js`

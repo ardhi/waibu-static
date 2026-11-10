@@ -62,10 +62,11 @@ async function factory (pkgName) {
      */
     assetDir = (ns) => {
       const { getPluginPrefix } = this.app.waibu
+      const { trimEnd } = this.app.lib._
       const prefix = this.config.waibu.prefix
       const dir = prefix === '' ? '' : `/${prefix}`
       if (!ns) return dir
-      return dir + '/' + getPluginPrefix(ns, 'waibuStatic')
+      return trimEnd(dir + '/' + getPluginPrefix(ns, 'waibuStatic'), '/')
     }
 
     /**
@@ -78,10 +79,11 @@ async function factory (pkgName) {
      * @returns {string} - Route path
      */
     routePath = (name, { uriEncoded = true } = {}) => {
+      const { cleanPath } = this.app.waibu
       let { ns, fullPath, subNs } = this.app.bajo.breakNsPath(name)
       const prefix = subNs === 'virtual' ? this.virtualDir(ns) : this.assetDir(ns)
       if (uriEncoded) fullPath = fullPath.split('/').map(p => encodeURI(p)).join('/')
-      return `${prefix}${fullPath}`.replace('//', '/')
+      return cleanPath(`${prefix}${fullPath}`)
     }
 
     /**
@@ -151,7 +153,8 @@ async function factory (pkgName) {
     _handleAsset = async (prefix) => {
       const { importPkg, eachPlugins, readConfig } = this.app.bajo
       const { fs } = this.app.lib
-      const { getPluginPrefix, isRouteDisabled } = this.app.waibu
+      const { trimEnd } = this.app.lib._
+      const { getPluginPrefix, isRouteDisabled, cleanPath } = this.app.waibu
       const fastifyStatic = await importPkg('waibu:waibu-fastify-static')
       const me = this
       this.log.trace('serving%s', this.t('assets'))
@@ -162,16 +165,13 @@ async function factory (pkgName) {
         else if (!fs.existsSync(root)) return undefined
         const opts = await readConfig(`${dir}/extend/${me.ns}/options.*`, { ns, ignoreError: true })
         opts.root = root
-        opts.prefix = '/' + getPluginPrefix(ns, 'waibuStatic')
-        const fullPath = `/${prefix}${opts.prefix}`.replaceAll('//', '/')
+        opts.prefix = trimEnd('/' + getPluginPrefix(ns, 'waibuStatic'), '/')
+        const fullPath = cleanPath(`/${prefix}${opts.prefix}`)
         if (isRouteDisabled(fullPath)) {
           me.log.warn('routeDisabled%s', `${fullPath}`)
           return
         }
-        opts.decorateReply = false
-        if (ns === me.app.mainNs) {
-          opts.decorateReply = true
-        }
+        opts.decorateReply = ns === me.app.mainNs
         me.log.trace(`- ${me.assetDir(ns)}/*`)
         opts.config = opts.config ?? {}
         opts.config.webApp = me.ns
@@ -192,10 +192,10 @@ async function factory (pkgName) {
     _handleVirtual = async (prefix) => {
       const { importPkg, eachPlugins, readConfig, getModuleDir } = this.app.bajo
       const { resolvePath } = this.app.lib.aneka
-      const { getPluginPrefix, isRouteDisabled } = this.app.waibu
+      const { getPluginPrefix, isRouteDisabled, cleanPath } = this.app.waibu
       const fastifyStatic = await importPkg('waibu:waibu-fastify-static')
       const { fs } = this.app.lib
-      const { isEmpty, isPlainObject } = this.app.lib._
+      const { isEmpty, isPlainObject, trimEnd } = this.app.lib._
       const me = this
       this.log.trace('serving%s', this.t('virtuals'))
       await me.webAppCtx.register(async (childCtx) => {
@@ -247,12 +247,12 @@ async function factory (pkgName) {
             }
             const prefix = getPluginPrefix(ns, 'waibuStatic')
             const p = v.prefix
-            v.prefix = `${prefix === '' ? '' : ('/' + prefix)}/${p}`
+            v.prefix = trimEnd(`${prefix === '' ? '' : ('/' + prefix)}/${p}`, '/')
             v.decorateReply = false
             if (ns === me.app.mainNs) {
               v.decorateReply = true
             }
-            const fullPath = `/${me.config.waibu.prefix}/${me.app.waibu.config.prefixVirtual}${v.prefix}`.replaceAll('//', '/')
+            const fullPath = cleanPath(`/${me.config.waibu.prefix}/${me.app.waibu.config.prefixVirtual}${v.prefix}`)
             if (isRouteDisabled(fullPath)) return
             v.config = v.config ?? {}
             v.config.webApp = me.ns
